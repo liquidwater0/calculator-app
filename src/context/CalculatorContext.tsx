@@ -57,6 +57,7 @@ export default function CalculatorProvider({ children }: { children: ReactNode }
     function addDigitToOperand(digit: string) {
         setCurrentOperand(prevOperand => {
             if (prevOperand[0] === "0") return digit;
+            if (digit === "." && prevOperand.includes(".")) return prevOperand;
             return prevOperand + digit;
         });
     }
