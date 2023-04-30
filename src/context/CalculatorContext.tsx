@@ -4,7 +4,7 @@ type CalculatorContextType = {
     currentOperand: string,
     calculate: () => void,
     chooseOperation: (operation: string) => void,
-    addDigitToOperand: (digit: string) => void,
+    addDigit: (digit: string) => void,
     deleteDigit: () => void,
     reset: () => void
 }
@@ -54,7 +54,7 @@ export default function CalculatorProvider({ children }: { children: ReactNode }
         setCurrentOperand("0");
     }
 
-    function addDigitToOperand(digit: string) {
+    function addDigit(digit: string) {
         setCurrentOperand(prevOperand => {
             if (prevOperand[0] === "0") return digit;
             if (digit === "." && prevOperand.includes(".")) return prevOperand;
@@ -77,7 +77,7 @@ export default function CalculatorProvider({ children }: { children: ReactNode }
     }
 
     return (
-        <CalculatorContext.Provider value={{ currentOperand, calculate, chooseOperation, addDigitToOperand, deleteDigit, reset }}>
+        <CalculatorContext.Provider value={{ currentOperand, calculate, chooseOperation, addDigit, deleteDigit, reset }}>
             { children }
         </CalculatorContext.Provider>
     );
