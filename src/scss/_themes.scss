@@ -13,14 +13,17 @@ html[data-theme="1"] {
     --theme-text: var(--text-white);
 
     --key-primary-background: hsl(30, 25%, 89%);
+    --key-primary-hover: hsl(30, 25%, 95%);
     --key-primary-shadow: hsl(28, 16%, 65%);
     --key-primary-text: var(--theme-background-1);
 
     --key-secondary-background: hsl(225, 21%, 49%);
+    --key-secondary-hover: hsl(225, 21%, 70%);
     --key-secondary-shadow: hsl(224, 28%, 35%);
     --key-secondary-text: var(--text-white);
 
     --key-equals-background: hsl(6, 63%, 50%);
+    --key-equals-hover: hsl(6, 63%, 60%);
     --key-equals-shadow: hsl(6, 70%, 34%);
     --key-equals-text: var(--text-white);
 }
@@ -32,14 +35,17 @@ html[data-theme="2"] {
     --theme-text: var(--text-very-dark-blue);
 
     --key-primary-background: hsl(45, 7%, 89%);
+    --key-primary-hover: hsl(45, 7%, 95%);
     --key-primary-shadow: hsl(35, 11%, 61%);
     --key-primary-text: var(--text-very-dark-blue);
 
     --key-secondary-background: hsl(185, 42%, 37%);
+    --key-secondary-hover: hsl(185, 42%, 50%);
     --key-secondary-shadow: hsl(185, 58%, 25%);
     --key-secondary-text: var(--text-white);
 
     --key-equals-background: hsl(25, 98%, 40%);
+    --key-equals-hover: hsl(25, 98%, 60%);
     --key-equals-shadow: hsl(25, 99%, 27%);
     --key-equals-text: var(--text-white);
 }
@@ -51,14 +57,17 @@ html[data-theme="3"] {
     --theme-text: var(--text-light-yellow);
 
     --key-primary-background: hsl(268, 47%, 21%);
+    --key-primary-hover: hsl(268, 47%, 50%);
     --key-primary-shadow: hsl(290, 70%, 36%);
     --key-primary-text: var(--text-light-yellow);
 
     --key-secondary-background: hsl(281, 89%, 26%);
+    --key-secondary-hover: hsl(281, 89%, 50%);
     --key-secondary-shadow: hsl(285, 91%, 52%);
     --key-secondary-text: var(--text-white);
 
     --key-equals-background: hsl(176, 100%, 44%);
+    --key-equals-hover: hsl(176, 100%, 75%);
     --key-equals-shadow: hsl(177, 92%, 70%);
     --key-equals-text: var(--text-very-dark-blue);
 }

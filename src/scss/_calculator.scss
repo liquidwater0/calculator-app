@@ -47,20 +47,28 @@
                 --shadow-color: transparent;
                 --background-color: transparent;
                 --text-color: transparent;
+                --hover-color: transparent;
 
                 cursor: pointer;
                 border: none;
-                border-radius: 0.25em;
+                border-radius: 0.3em;
                 text-transform: uppercase;
                 height: 2.5rem;
                 background-color: var(--background-color);
                 color: var(--text-color);
                 border-bottom: var(--button-shadow-size) solid var(--shadow-color);
-                transition: border-width 200ms, transform 200ms;
+                transition: 
+                    border-width 200ms, 
+                    transform 200ms,
+                    background-color 200ms;
 
                 &:active {
                     border-width: 0px;
                     transform: translateY(var(--button-shadow-size));
+                }
+
+                &:hover {
+                    background-color: var(--hover-color);
                 }
             }
 
@@ -68,6 +76,7 @@
                 --shadow-color: var(--key-primary-shadow);
                 --background-color: var(--key-primary-background);
                 --text-color: var(--key-primary-text);
+                --hover-color: var(--key-primary-hover);
 
                 font-size: 1.5rem;
             }
@@ -76,6 +85,7 @@
                 --shadow-color: var(--key-secondary-shadow);
                 --background-color: var(--key-secondary-background);
                 --text-color: var(--key-secondary-text);
+                --hover-color: var(--key-secondary-hover);
 
                 font-size: 1.15rem;
             }
@@ -103,6 +113,7 @@
                 --shadow-color: var(--key-equals-shadow);
                 --background-color: var(--key-equals-background);
                 --text-color: var(--key-equals-text);
+                --hover-color: var(--key-equals-hover);
 
                 grid-area: equals;
             }
