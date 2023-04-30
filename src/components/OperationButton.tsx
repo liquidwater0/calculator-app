@@ -12,7 +12,7 @@ export default function OperationButton({ operation }: { operation: string }) {
     
     return (
         <button 
-            className={`operation-button ${getClassToUse()}`}
+            className={`button-primary ${getClassToUse()}`}
             onClick={() => chooseOperation(operation)}
         >
             { operation }

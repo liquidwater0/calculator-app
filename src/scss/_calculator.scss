@@ -1,0 +1,108 @@
+.calculator {
+    --border-radius: 0.5rem;
+    --button-shadow-size: 2px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 25rem;
+
+    .calculator-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .theme-toggle-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+
+    .calculator-display {
+        background-color: var(--theme-background-3);
+        text-align: right;
+        padding: 0.65em;
+        border-radius: var(--border-radius);
+        font-size: 2.75rem;
+    }
+
+    .key-pad {
+        display: grid;
+        gap: 1rem;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(5, 1fr);
+        grid-template-areas: 
+            "seven eight nine del"
+            "four five six plus"
+            "one two three minus"
+            "period zero divide multiply"
+            "reset reset equals equals";
+        background-color: var(--theme-background-2);
+        padding: 1.25rem;
+        border-radius: var(--border-radius);
+
+            button {
+                --shadow-color: transparent;
+                --background-color: transparent;
+                --text-color: transparent;
+
+                cursor: pointer;
+                border: none;
+                border-radius: 0.25em;
+                text-transform: uppercase;
+                height: 2.5rem;
+                background-color: var(--background-color);
+                color: var(--text-color);
+                border-bottom: 2px solid var(--shadow-color);
+                transition: border-width 200ms, transform 200ms;
+
+                &:active {
+                    border-width: 0px;
+                    transform: translateY(var(--button-shadow-size));
+                }
+            }
+
+            .button-primary {
+                --shadow-color: var(--key-primary-shadow);
+                --background-color: var(--key-primary-background);
+                --text-color: var(--key-primary-text);
+
+                font-size: 1.5rem;
+            }
+
+            .button-secondary {
+                --shadow-color: var(--key-secondary-shadow);
+                --background-color: var(--key-secondary-background);
+                --text-color: var(--key-secondary-text);
+
+                font-size: 1.15rem;
+            }
+
+            .digit-0-button { grid-area: zero }
+            .digit-1-button { grid-area: one }
+            .digit-2-button { grid-area: two }
+            .digit-3-button { grid-area: three }
+            .digit-4-button { grid-area: four }
+            .digit-5-button { grid-area: five }
+            .digit-6-button { grid-area: six }
+            .digit-7-button { grid-area: seven }
+            .digit-8-button { grid-area: eight }
+            .digit-9-button { grid-area: nine }
+            .digit-period-button { grid-area: period }
+            
+            .plus-button { grid-area: plus }
+            .minus-button { grid-area: minus }
+            .multiply-button { grid-area: multiply }
+            .divide-button { grid-area: divide }
+
+            .reset-button { grid-area: reset }
+            .equals-button { 
+                --shadow-color: var(--key-equals-shadow);
+                --background-color: var(--key-equals-background);
+                --text-color: var(--key-equals-text);
+
+                grid-area: equals;
+            }
+    }
+}

@@ -5,7 +5,7 @@ export default function DigitButton({ digit }: { digit: string }) {
 
     return (
         <button 
-            className={`digit-button digit-${digit === "." ? "period" : digit}-button`}
+            className={`button-primary digit-${digit === "." ? "period" : digit}-button`}
             onClick={() => addDigit(digit)}
         >
             { digit }

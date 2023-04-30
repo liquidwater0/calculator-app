@@ -1,4 +1,5 @@
 @use "./themes" as *;
+@use "./calculator" as *;
 @import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@700&display=swap');
 
 *, *::before, *::after {
@@ -8,9 +9,21 @@
     font-family: 'League Spartan', sans-serif;
 }
 
+html, body, #root, main {
+    height: 100%;
+}
+
 body {
     font-size: 32px;
     font-weight: 700;
+    background-color: var(--theme-background-1);
+    color: var(--theme-text);
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .attribution { 

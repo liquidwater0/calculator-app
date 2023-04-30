@@ -14,7 +14,7 @@ function App() {
 	}, [theme]);
 
 	return (
-		<>
+		<main>
 			<div className="calculator">
 				<header className="calculator-header">
 					<div className='title'>calc</div>
@@ -37,20 +37,20 @@ function App() {
 							digit={digit}
 						/>
 					)}
-					{["+", "-", "x", "/", "."].map(operation => 
+					{["+", "-", "x", "/"].map(operation => 
 						<OperationButton 
 							key={operation} 
 							operation={operation}
 						/>
 					)}
 					<button 
-						className="secondary reset-button"
+						className="button-secondary reset-button"
 						onClick={reset}
 					>
 						Reset
 					</button>
 					<button 
-						className="secondary del-button"
+						className="button-secondary del-button"
 						onClick={deleteDigit}
 					>
 						Del
@@ -68,7 +68,7 @@ function App() {
 				Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
 				Coded by <a href="#">Your Name Here</a>.
 			</div> */}
-		</>
+		</main>
 	)
 }
 
