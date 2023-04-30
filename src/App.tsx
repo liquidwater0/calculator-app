@@ -7,7 +7,7 @@ import OperationButton from './components/OperationButton';
 
 /*
 	TODO:
-	Fix number formatter limiting to 3 decimal places
+	Fix number formatter limiting to 3 decimal places and adding 0s on long number
 */
 
 function App() {
@@ -31,7 +31,8 @@ function App() {
 
 				<div className="calculator-display">
 					<div className="calculator-display-text">
-						{ new Intl.NumberFormat(undefined).format(+currentOperand) }
+						{/* { new Intl.NumberFormat(undefined).format(+currentOperand) } */}
+						{ currentOperand }
 					</div>
 				</div>
 
