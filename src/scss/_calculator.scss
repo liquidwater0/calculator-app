@@ -96,6 +96,7 @@
             .multiply-button { grid-area: multiply }
             .divide-button { grid-area: divide }
 
+            .del-button { grid-area: del }
             .reset-button { grid-area: reset }
             .equals-button { 
                 --shadow-color: var(--key-equals-shadow);
