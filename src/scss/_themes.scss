@@ -1,0 +1,52 @@
+:root {
+    --text-very-dark-gray-blue: hsl(221, 14%, 31%);
+    --text-very-dark-gray-yellow: hsl(60, 10%, 19%);
+    --text-light-yellow: hsl(52, 100%, 62%);
+    --text-very-dark-blue: hsl(198, 20%, 13%);
+    --text-white: hsl(0, 0%, 100%);
+}
+
+html[data-theme="1"] {
+    --theme-background-1: hsl(222, 26%, 31%);
+    --theme-background-2: hsl(223, 31%, 20%);
+    --theme-background-3: hsl(224, 36%, 15%);
+
+    --key-primary-background: hsl(30, 25%, 89%);
+    --key-primary-shadow: hsl(28, 16%, 65%);
+
+    --key-secondary-background: hsl(225, 21%, 49%);
+    --key-secondary-shadow: hsl(224, 28%, 35%);
+
+    --key-equals-background: hsl(6, 63%, 50%);
+    --key-equals-shadow: hsl(6, 70%, 34%);
+}
+
+html[data-theme="2"] {
+    --theme-background-1: hsl(0, 0%, 90%);
+    --theme-background-2: hsl(0, 5%, 81%);
+    --theme-background-3: hsl(0, 0%, 93%);
+
+    --key-primary-background: hsl(45, 7%, 89%);
+    --key-primary-shadow: hsl(35, 11%, 61%);
+
+    --key-secondary-background: hsl(185, 42%, 37%);
+    --key-secondary-shadow: hsl(185, 58%, 25%);
+
+    --key-equals-background: hsl(25, 98%, 40%);
+    --key-equals-shadow: hsl(25, 99%, 27%);
+}
+
+html[data-theme="3"] {
+    --theme-background-1: hsl(268, 75%, 9%);
+    --theme-background-2: hsl(268, 71%, 12%);
+    --theme-background-3: hsl(268, 71%, 12%);
+
+    --key-primary-background: hsl(268, 47%, 21%);
+    --key-primary-shadow: hsl(290, 70%, 36%);
+
+    --key-secondary-background: hsl(281, 89%, 26%);
+    --key-secondary-shadow: hsl(285, 91%, 52%);
+
+    --key-equals-background: hsl(176, 100%, 44%);
+    --key-equals-shadow: hsl(177, 92%, 70%);
+}
