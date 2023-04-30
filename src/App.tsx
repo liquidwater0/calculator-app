@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
 import "./scss/App.scss";
+import { useCalculator } from './context/CalculatorContext';
 import Switch from './components/Switch';
 import DigitButton from './components/DigitButton';
 import OperationButton from './components/OperationButton';
 
 function App() {
+	const { currentOperand, calculate, reset, deleteDigit } = useCalculator();
 	const [theme, setTheme] = useState<string>("1");
 
 	useEffect(() => {
@@ -24,12 +26,12 @@ function App() {
 
 				<div className="calculator-display">
 					<div className="calculator-display-text">
-						399,981
+						{ currentOperand }
 					</div>
 				</div>
 
 				<div className="key-pad">
-					{[1, 2, 3, 4, 5, 6, 7, 8, 9, 0].map(digit => 
+					{["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "."].map(digit => 
 						<DigitButton 
 							key={digit} 
 							digit={digit}
@@ -41,13 +43,22 @@ function App() {
 							operation={operation}
 						/>
 					)}
-					<button className="secondary reset-button">
+					<button 
+						className="secondary reset-button"
+						onClick={reset}
+					>
 						Reset
 					</button>
-					<button className="secondary del-button">
+					<button 
+						className="secondary del-button"
+						onClick={deleteDigit}
+					>
 						Del
 					</button>
-					<button className="equals-button">
+					<button 
+						className="equals-button"
+						onClick={calculate}
+					>
 						=
 					</button>
 				</div>
