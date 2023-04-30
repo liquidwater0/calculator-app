@@ -5,8 +5,13 @@ import Switch from './components/Switch';
 import DigitButton from './components/DigitButton';
 import OperationButton from './components/OperationButton';
 
+/*
+	TODO:
+	Fix number formatter limiting to 3 decimal places
+*/
+
 function App() {
-	const { currentOperand, calculate, reset, deleteDigit } = useCalculator();
+	const { currentOperand, calculate, deleteDigit, reset } = useCalculator();
 	const [theme, setTheme] = useState<string>("1");
 
 	useEffect(() => {
@@ -26,7 +31,7 @@ function App() {
 
 				<div className="calculator-display">
 					<div className="calculator-display-text">
-						{ currentOperand }
+						{ new Intl.NumberFormat(undefined).format(+currentOperand) }
 					</div>
 				</div>
 
