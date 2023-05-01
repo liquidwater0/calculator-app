@@ -6,13 +6,13 @@ export type Operation =
     typeof OPERATIONS.MULTIPLY |
     typeof OPERATIONS.DIVIDE;
 
-export type Operand = "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | ".";
+export type Digit = "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | ".";
 
 type CalculatorContextType = {
     display: string,
     calculate: () => void,
     chooseOperation: (operation: Operation) => void,
-    addDigit: (digit: Operand) => void,
+    addDigit: (digit: Digit) => void,
     deleteDigit: () => void,
     reset: () => void
 }
@@ -73,7 +73,7 @@ export default function CalculatorProvider({ children }: { children: ReactNode }
         setCurrentOperand("0");
     }
 
-    function addDigit(digit: Operand) {
+    function addDigit(digit: Digit) {
         setCurrentOperand(prevOperand => {
             if (prevOperand[0] === "0") return digit;
             if (digit === "." && prevOperand.includes(".")) return prevOperand;
