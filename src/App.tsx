@@ -8,6 +8,7 @@ import OperationButton from './components/OperationButton';
 /*
 	TODO:
 	Fix number formatter limiting to 3 decimal places and adding 0s on long number
+	Make step switch
 */
 
 function App() {
