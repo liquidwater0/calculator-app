@@ -1,20 +1,22 @@
 import { useState, useEffect, useContext, createContext, ReactNode } from "react";
 
+export type Operation = 
+    typeof OPERATIONS.ADD |
+    typeof OPERATIONS.SUBTRACT |
+    typeof OPERATIONS.MULTIPLY |
+    typeof OPERATIONS.DIVIDE;
+
+export type Operand = "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | ".";
+
 type CalculatorContextType = {
     display: string,
     calculate: () => void,
-    chooseOperation: (operation: string) => void,
-    addDigit: (digit: string) => void,
+    chooseOperation: (operation: Operation) => void,
+    addDigit: (digit: Operand) => void,
     deleteDigit: () => void,
     reset: () => void
 }
-
-const CalculatorContext = createContext<CalculatorContextType>(null!);
-
-export function useCalculator() {
-    return useContext(CalculatorContext);
-}
-
+   
 export const OPERATIONS = {
     ADD: "+",
     SUBTRACT: "-",
@@ -22,10 +24,16 @@ export const OPERATIONS = {
     DIVIDE: "/"
 } as const;
 
+const CalculatorContext = createContext<CalculatorContextType>(null!);
+
+export function useCalculator() {
+    return useContext(CalculatorContext);
+}
+
 //Make it so you can do other operations on the result from a previous calculation
 
 export default function CalculatorProvider({ children }: { children: ReactNode }) {
-    const [currentOperation, setCurrentOperation] = useState<string>();
+    const [currentOperation, setCurrentOperation] = useState<Operation>();
     const [currentOperand, setCurrentOperand] = useState<string>("0");
     const [previousOperand, setPreviousOperand] = useState<string>("0");
     const [display, setDisplay] = useState<string>("0");
@@ -55,16 +63,17 @@ export default function CalculatorProvider({ children }: { children: ReactNode }
         }
 
         setPreviousOperand(calculationResult);
+        setCurrentOperand(calculationResult);
         setDisplay(calculationResult);
     }
 
-    function chooseOperation(operation: string) {
+    function chooseOperation(operation: Operation) {
         setCurrentOperation(operation);
         setPreviousOperand(currentOperand);
         setCurrentOperand("0");
     }
 
-    function addDigit(digit: string) {
+    function addDigit(digit: Operand) {
         setCurrentOperand(prevOperand => {
             if (prevOperand[0] === "0") return digit;
             if (digit === "." && prevOperand.includes(".")) return prevOperand;

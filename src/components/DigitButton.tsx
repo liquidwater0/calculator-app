@@ -1,6 +1,6 @@
-import { useCalculator } from "../context/CalculatorContext";
+import { useCalculator, Operand } from "../context/CalculatorContext";
 
-export default function DigitButton({ digit }: { digit: string }) {
+export default function DigitButton({ digit }: { digit: Operand }) {
     const { addDigit } = useCalculator();
 
     return (

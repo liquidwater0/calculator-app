@@ -1,6 +1,6 @@
-import { OPERATIONS, useCalculator } from "../context/CalculatorContext";
+import { useCalculator, OPERATIONS, Operation } from "../context/CalculatorContext";
 
-export default function OperationButton({ operation }: { operation: string }) {
+export default function OperationButton({ operation }: { operation: Operation }) {
     const { chooseOperation } = useCalculator();
 
     function getClassToUse() {
