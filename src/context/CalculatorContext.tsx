@@ -1,7 +1,7 @@
-import { useState, useContext, createContext, ReactNode } from "react";
+import { useState, useEffect, useContext, createContext, ReactNode } from "react";
 
 type CalculatorContextType = {
-    currentOperand: string,
+    display: string,
     calculate: () => void,
     chooseOperation: (operation: string) => void,
     addDigit: (digit: string) => void,
@@ -22,30 +22,40 @@ export const OPERATIONS = {
     DIVIDE: "/"
 } as const;
 
+//Make it so you can do other operations on the result from a previous calculation
+
 export default function CalculatorProvider({ children }: { children: ReactNode }) {
+    const [currentOperation, setCurrentOperation] = useState<string>();
     const [currentOperand, setCurrentOperand] = useState<string>("0");
     const [previousOperand, setPreviousOperand] = useState<string>("0");
-    const [currentOperation, setCurrentOperation] = useState<string>();
+    const [display, setDisplay] = useState<string>("0");
+
+    useEffect(() => {
+        setDisplay(currentOperand);
+    }, [currentOperand]);
 
     function calculate() {
         const currentOperandAsNumber = +currentOperand;
         const previousOperandAsNumber = +previousOperand;
+        let calculationResult: string = "0";
 
         switch(currentOperation) {
             case OPERATIONS.ADD:
-                //fix calculating being backwards
-
+                calculationResult = (previousOperandAsNumber + currentOperandAsNumber).toString();
                 break;
             case OPERATIONS.SUBTRACT:
-                
+                calculationResult = (previousOperandAsNumber - currentOperandAsNumber).toString();
                 break;
             case OPERATIONS.MULTIPLY:
-                
+                calculationResult = (previousOperandAsNumber * currentOperandAsNumber).toString();
                 break;
             case OPERATIONS.DIVIDE:
-                
+                calculationResult = (previousOperandAsNumber / currentOperandAsNumber).toString();
                 break;
         }
+
+        setPreviousOperand(calculationResult);
+        setDisplay(calculationResult);
     }
 
     function chooseOperation(operation: string) {
@@ -71,13 +81,13 @@ export default function CalculatorProvider({ children }: { children: ReactNode }
     }
 
     function reset() {
+        setCurrentOperation(undefined);
         setCurrentOperand("0");
         setPreviousOperand("0");
-        setCurrentOperation(undefined);
     }
 
     return (
-        <CalculatorContext.Provider value={{ currentOperand, calculate, chooseOperation, addDigit, deleteDigit, reset }}>
+        <CalculatorContext.Provider value={{ display, calculate, chooseOperation, addDigit, deleteDigit, reset }}>
             { children }
         </CalculatorContext.Provider>
     );

@@ -11,7 +11,7 @@ import OperationButton from './components/OperationButton';
 */
 
 function App() {
-	const { currentOperand, calculate, deleteDigit, reset } = useCalculator();
+	const { display, calculate, deleteDigit, reset } = useCalculator();
 	const [theme, setTheme] = useState<string>("1");
 
 	useEffect(() => {
@@ -32,7 +32,7 @@ function App() {
 				<div className="calculator-display">
 					<div className="calculator-display-text">
 						{/* { new Intl.NumberFormat(undefined).format(+currentOperand) } */}
-						{ currentOperand }
+						{ display }
 					</div>
 				</div>
 
