@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import "./scss/App.scss";
-import { useCalculator } from './context/CalculatorContext';
+import { useCalculator, Digit, Operation } from './context/CalculatorContext';
 import Switch from './components/Switch';
 import DigitButton from './components/DigitButton';
 import OperationButton from './components/OperationButton';
@@ -37,13 +37,13 @@ function App() {
 				</div>
 
 				<div className="key-pad">
-					{["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "."].map(digit => 
+					{(["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "."] as Digit[]).map(digit => 
 						<DigitButton 
 							key={digit} 
 							digit={digit}
 						/>
 					)}
-					{["+", "-", "x", "/"].map(operation => 
+					{(["+", "-", "x", "/"] as Operation[]).map(operation => 
 						<OperationButton 
 							key={operation} 
 							operation={operation}
