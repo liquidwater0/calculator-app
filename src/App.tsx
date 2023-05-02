@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import "./scss/App.scss";
 import { useCalculator, Digit, Operation } from './context/CalculatorContext';
 import { useLocalStorage } from './hooks/useLocalStorage';
