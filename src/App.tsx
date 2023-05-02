@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import "./scss/App.scss";
 import { useCalculator, Digit, Operation } from './context/CalculatorContext';
+import { useLocalStorage } from './hooks/useLocalStorage';
 import StepSwitch, { StepSwitchType } from './components/StepSwitch';
 import DigitButton from './components/DigitButton';
 import OperationButton from './components/OperationButton';
@@ -13,7 +14,7 @@ import OperationButton from './components/OperationButton';
 
 function App() {
 	const { display, calculate, deleteDigit, reset } = useCalculator();
-	const [theme, setTheme] = useState<string>("1");
+	const [theme, setTheme] = useLocalStorage<string>("calc-app-theme", "1");
 	const themeSwitchRef = useRef<StepSwitchType>(null!);
 
 	useEffect(() => {
@@ -30,7 +31,7 @@ function App() {
 						<StepSwitch
 							ref={themeSwitchRef}
 							steps={3}
-							defaultStep={1}
+							defaultStep={+theme}
 							onUpdate={currentStep => setTheme(currentStep.toString())}
 						/>
 					</div>
