@@ -53,14 +53,15 @@ function StepSwitch({ steps, defaultStep, onUpdate }: StepSwitchProps, ref: Ref<
     }, []);
 
     useEffect(() => {
-        if (!onUpdate) return;
-
         const currentSelectedStep = stepsArray.find(currentStep => currentStep.selected);
         if (!currentSelectedStep) return;
-        onUpdate(currentSelectedStep.stepNumber);
 
         if (stepSliderRef.current) {
             stepSliderRef.current.style.setProperty("--step-number", currentSelectedStep.stepNumber.toString());
+        }
+
+        if (onUpdate) {
+            onUpdate(currentSelectedStep.stepNumber);
         }
     }, [stepsArray]);
 
