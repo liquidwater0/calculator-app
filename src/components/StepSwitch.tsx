@@ -13,7 +13,7 @@ type Step = {
     selected: boolean
 }
 
-function StepSwitch({ steps, defaultStep, onUpdate }: StepSwitchProps, ref: Ref<StepSwitchType>) {
+function StepSwitch({ steps, defaultStep = 1, onUpdate }: StepSwitchProps, ref: Ref<StepSwitchType>) {
     const [stepsArray, setStepsArray] = useState<Step[]>(() => {
         let stepAmount = steps;
 
@@ -24,11 +24,8 @@ function StepSwitch({ steps, defaultStep, onUpdate }: StepSwitchProps, ref: Ref<
 
             if (
                 object.stepNumber === defaultStep || 
-                !defaultStep && 
-                object.stepNumber === 1 ||
-                defaultStep && 
-                defaultStep > steps && 
-                object.stepNumber === 1
+                defaultStep > steps && object.stepNumber === 1 ||
+                defaultStep < steps && object.stepNumber === 1
             ) object.selected = true;
 
             return object;
