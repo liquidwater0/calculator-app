@@ -8,7 +8,17 @@ import OperationButton from './components/OperationButton';
 
 function App() {
 	const { display, calculate, deleteDigit, reset } = useCalculator();
-	const [theme, setTheme] = useLocalStorage<string>("calc-app-theme", "1");
+	const [theme, setTheme] = useLocalStorage<string>("calc-app-theme", () => {
+		const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+		const prefersLight = window.matchMedia("(prefers-color-scheme: light)").matches;
+
+		let theme = "1";
+
+		if (prefersDark) theme = "1";
+		if (prefersLight) theme = "2";
+
+		return theme;
+	});
 	const themeSwitchRef = useRef<StepSwitchType>(null!);
 
 	useEffect(() => {
