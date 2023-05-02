@@ -6,11 +6,6 @@ import StepSwitch, { StepSwitchType } from './components/StepSwitch';
 import DigitButton from './components/DigitButton';
 import OperationButton from './components/OperationButton';
 
-/*
-	TODO:
-	Fix number formatter limiting to 3 decimal places and adding 0s on long number
-*/
-
 function App() {
 	const { display, calculate, deleteDigit, reset } = useCalculator();
 	const [theme, setTheme] = useLocalStorage<string>("calc-app-theme", "1");
@@ -38,8 +33,9 @@ function App() {
 
 				<div className="calculator-display">
 					<div className="calculator-display-text">
-						{/* { new Intl.NumberFormat(undefined).format(+currentOperand) } */}
-						{ display }
+						{ new Intl.NumberFormat().format(+display.split(".")[0]) } 
+						{ display.includes(".") && "." }
+						{ display.split(".")[1] }
 					</div>
 				</div>
 
