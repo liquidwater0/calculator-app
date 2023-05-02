@@ -89,6 +89,7 @@ function StepSwitch({ steps, defaultStep, onUpdate }: StepSwitchProps, ref: Ref<
                     key={stepNumber}
                     aria-label={`step-${stepNumber}-toggle`}
                     aria-controls={`step-${stepNumber}-input`}
+                    data-step={stepNumber}
                     onClick={() => switchToStep(stepNumber)}
                 >
                     <input

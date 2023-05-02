@@ -2,6 +2,7 @@
     --step-size: 1.25rem;
     --gap: 0.5rem;
     --step-number: 1;
+    --step-label-margin: 1rem;
 
     display: flex;
     justify-content: center;
@@ -22,11 +23,21 @@
     }
 
     button {
+        position: relative;
         background-color: transparent;
         width: var(--step-size);
         height: var(--step-size);
         outline: none;
         border: none;
         cursor: pointer;
+
+        &::before {
+            content: attr(data-step);
+            position: absolute;
+            color: var(--theme-text);
+            top: calc(var(--step-label-margin) * -1);
+            left: 50%;
+            transform: translateX(-50%);
+        }
     }
 }
