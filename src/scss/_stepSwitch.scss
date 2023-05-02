@@ -19,7 +19,15 @@
         width: calc(var(--step-size) - var(--gap));
         height: calc(var(--step-size) - var(--gap));
         left: calc((var(--step-size) * var(--step-number)) - (var(--step-size) / 1 - var(--gap) / 2));
-        transition: left 500ms;
+        cursor: pointer;
+        z-index: 100;
+        transition: 
+            left 500ms, 
+            background-color 250ms;
+
+        &:hover {
+            background-color: var(--key-equals-hover);
+        }
     }
 
     button {
