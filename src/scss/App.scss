@@ -37,8 +37,10 @@ main {
     a { 
         color: var(--key-equals-background);
         text-decoration: none;
+        transition: color 250ms;
 
         &:hover {
+            color: var(--key-equals-hover);
             text-decoration: underline;
         }
     }
