@@ -1,0 +1,32 @@
+.step-slider {
+    --step-size: 1.25rem;
+    --gap: 0.5rem;
+    --step-number: 1;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: var(--step-size);
+    background-color: var(--theme-background-2);
+    border-radius: 1000px;
+
+    .slider-thumb {
+        position: absolute;
+        background-color: var(--key-equals-background);
+        border-radius: 100%;
+        width: calc(var(--step-size) - var(--gap));
+        height: calc(var(--step-size) - var(--gap));
+        left: calc((var(--step-size) * var(--step-number)) - (var(--step-size) / 1 - var(--gap) / 2));
+        transition: left 500ms;
+    }
+
+    button {
+        background-color: transparent;
+        width: var(--step-size);
+        height: var(--step-size);
+        outline: none;
+        border: none;
+        cursor: pointer;
+    }
+}

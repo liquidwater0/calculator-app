@@ -1,4 +1,4 @@
-import { useState, useEffect, useImperativeHandle, forwardRef, Ref } from 'react';
+import { useState, useEffect, useRef, useImperativeHandle, forwardRef, Ref } from 'react';
 
 type StepSwitchProps = {
     steps: number,
@@ -34,6 +34,7 @@ function StepSwitch({ steps, defaultStep, onUpdate }: StepSwitchProps, ref: Ref<
             return object;
         });
     });
+    const stepSliderRef = useRef<HTMLDivElement>(null!);
     const name = crypto.randomUUID();
 
     useImperativeHandle(ref, () => {
@@ -57,6 +58,10 @@ function StepSwitch({ steps, defaultStep, onUpdate }: StepSwitchProps, ref: Ref<
         const currentSelectedStep = stepsArray.find(currentStep => currentStep.selected);
         if (!currentSelectedStep) return;
         onUpdate(currentSelectedStep.stepNumber);
+
+        if (stepSliderRef.current) {
+            stepSliderRef.current.style.setProperty("--step-number", currentSelectedStep.stepNumber.toString());
+        }
     }, [stepsArray]);
 
     function switchToStep(step: number) {
@@ -76,15 +81,25 @@ function StepSwitch({ steps, defaultStep, onUpdate }: StepSwitchProps, ref: Ref<
     }
     
     return (
-        <div className='step-slider'>
+        <div className='step-slider' ref={stepSliderRef}>
+            <div className="slider-thumb"/>
+
             {stepsArray.map(({ stepNumber }) =>
-                <input 
+                <button 
                     key={stepNumber}
-                    type="radio" 
-                    checked={stepNumber === stepsArray.find(step => step.selected)?.stepNumber ? true : false}
-                    name={name}
-                    onChange={() => switchToStep(stepNumber)}
-                />
+                    aria-label={`step-${stepNumber}-toggle`}
+                    aria-controls={`step-${stepNumber}-input`}
+                    onClick={() => switchToStep(stepNumber)}
+                >
+                    <input
+                        style={{ display: "none" }}
+                        type="radio" 
+                        checked={stepNumber === stepsArray.find(step => step.selected)?.stepNumber ? true : false}
+                        name={name}
+                        id={`step-${stepNumber}-input`}
+                        readOnly
+                    />
+                </button>
             )}
         </div>
     );

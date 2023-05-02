@@ -18,6 +18,12 @@
             display: flex;
             justify-content: center;
             align-items: center;
+
+            label {
+                font-size: 1rem;
+                margin-right: 1rem;
+                text-transform: uppercase;
+            }
         }
     }
 
