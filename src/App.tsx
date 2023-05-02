@@ -29,7 +29,7 @@ function App() {
 		<main>
 			<div className="calculator">
 				<header className="calculator-header">
-					<div className='title'>calc</div>
+					<h1 className='title'>calc</h1>
 					<div className="theme-toggle-container">
 						<label onClick={() => themeSwitchRef.current.forward()}>Theme</label>
 						<StepSwitch
