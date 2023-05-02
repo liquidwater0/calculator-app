@@ -1,3 +1,5 @@
+@use "./stepSwitch" as *;
+
 .calculator {
     --border-radius: 0.5rem;
     --button-shadow-size: 0.15rem;
