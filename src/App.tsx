@@ -1,19 +1,20 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import "./scss/App.scss";
 import { useCalculator, Digit, Operation } from './context/CalculatorContext';
-import Switch from './components/Switch';
+import StepSwitch, { StepSwitchType } from './components/StepSwitch';
 import DigitButton from './components/DigitButton';
 import OperationButton from './components/OperationButton';
 
 /*
 	TODO:
 	Fix number formatter limiting to 3 decimal places and adding 0s on long number
-	Make step switch
+	Style step switch
 */
 
 function App() {
 	const { display, calculate, deleteDigit, reset } = useCalculator();
 	const [theme, setTheme] = useState<string>("1");
+	const themeSwitchRef = useRef<StepSwitchType>(null!);
 
 	useEffect(() => {
 		document.documentElement.setAttribute("data-theme", theme);
@@ -25,8 +26,13 @@ function App() {
 				<header className="calculator-header">
 					<div className='title'>calc</div>
 					<div className="theme-toggle-container">
-						<label htmlFor="">Theme</label>
-						<Switch/>
+						<label onClick={() => themeSwitchRef.current.forward()}>Theme</label>
+						<StepSwitch
+							ref={themeSwitchRef}
+							steps={3}
+							defaultStep={1}
+							onUpdate={currentStep => setTheme(currentStep.toString())}
+						/>
 					</div>
 				</header>
 
